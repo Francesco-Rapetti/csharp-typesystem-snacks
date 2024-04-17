@@ -113,6 +113,13 @@ namespace csharp_typesystem_snacks
             {
                 // Snack 8: Crea un array di numeri interi e fai la somma di tutti gli elementi che sono in posizione dispari.
                 Console.WriteLine(Program.Prettifier("Snack 8"));
+                int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 4, 45, 2, 3, 45, 25345};
+                int sum = 0;
+                for (int i = 1; i < numbers.Length; i += 2)
+                {
+                    sum += numbers[i];
+                }
+                Console.WriteLine($"La somma dei numeri in posizione dispari è: {sum}");
             }
 
             Console.WriteLine();
@@ -120,6 +127,7 @@ namespace csharp_typesystem_snacks
             {
                 // Snack 9: Crea un array vuoto e chiedi all’utente un numero da inserire nell’array.Continua a chiedere i numeri all’utente e a inserirli nell’array, fino a quando la somma degli elementi è minore di 50.
                 Console.WriteLine(Program.Prettifier("Snack 9"));
+
             }
 
             Console.WriteLine();
