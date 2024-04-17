@@ -76,6 +76,11 @@ namespace csharp_typesystem_snacks
             {
                 // Snack 6: In un array sono contenuti i nomi degli invitati alla festa del grande Gatsby. Chiedi all’utente il suo nome e comunicagli se può partecipare o meno alla festa.
                 Console.WriteLine(Program.Prettifier("Snack 6"));
+                string[] invited = { "francesco", "gabriele", "gianmarco", "valerio", "davide", "adnrea" };
+                Console.WriteLine("Inserisci il tuo nome");
+                string name = Console.ReadLine();
+                if (invited.Contains(name.ToLower())) Console.WriteLine($"Puoi partecipare alla festa, {name}!");
+                else Console.WriteLine($"Non ho trovato il tuo nome nella lista degli invitati, {name}.");
             }
 
             Console.WriteLine();
