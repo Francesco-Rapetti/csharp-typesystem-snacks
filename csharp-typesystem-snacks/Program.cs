@@ -6,13 +6,42 @@ namespace csharp_typesystem_snacks
     {
         static void Main(string[] args)
         {
+                bool control = true;
             {
                 // Snack 1: L’utente inserisce due numeri in successione. Il software stampa il maggiore.
                 Console.WriteLine(Program.Prettifier("Snack 1"));
-                Console.WriteLine("Inserisci il primo intero");
-                int num1 = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Inserisci il secondo intero");
-                int num2 = Convert.ToInt32(Console.ReadLine());
+                int num1 = 0;
+                int num2 = 0;
+                while (control)
+                {
+                    try
+                    {
+                        Console.WriteLine("Inserisci il primo intero");
+                        num1 = Convert.ToInt32(Console.ReadLine());
+                        control = false;
+                    } catch (FormatException)
+                    {
+                        Console.WriteLine("ERRORE: Il valore inserito non è un numero");
+                        control = true;
+                    }
+                }
+                control = true;
+                while (control)
+                {
+                    try
+                    {
+                        Console.WriteLine("Inserisci il secondo intero");
+                        num2 = Convert.ToInt32(Console.ReadLine());
+                        control = false;
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("ERRORE: Il valore inserito non è un numero");
+                        control = true;
+                    }
+                }
+                control = true;
+                
                 Console.WriteLine($"Il numero maggiore tra {num1} e {num2} è: {Math.Max(num1, num2)}");
             }
 
@@ -21,10 +50,35 @@ namespace csharp_typesystem_snacks
             {
                 // Snack 2: L’utente inserisce due parole in successione. Il software stampa prima la parola più corta, poi la parola più lunga.
                 Console.WriteLine(Program.Prettifier("Snack 2"));
-                Console.WriteLine("Inserisci la prima parola");
-                string word1 = Console.ReadLine();
-                Console.WriteLine("Inserisci la seconda parola");
-                string word2 = Console.ReadLine();
+                string word1 = "";
+                string word2 = "";
+                while (control)
+                {
+                    try
+                    {
+                        Console.WriteLine("Inserisci la prima parola");
+                        word1 = Console.ReadLine();
+                        control = false;
+                    } catch (FormatException)
+                    {
+                        Console.WriteLine("ERRORE: Il valore inserito non è una stringa");
+                        control = true;
+                    }
+                }
+                control = true;
+                while (control)
+                {
+                    try
+                    {
+                        Console.WriteLine("Inserisci la seconda parola");
+                        word2 = Console.ReadLine();
+                        control = false;
+                    } catch (FormatException)
+                    {
+                        control = true;
+                    }
+                }
+                control = true;
                 if (word1.Length > word2.Length) Console.WriteLine($"La parola più corta è: {word2} e la parola più lunga è: {word1}");
                 else if (word1.Length < word2.Length) Console.WriteLine($"La parola più corta è: {word1} e la parola più lunga è: {word2}");
                 else Console.WriteLine("Le due parole hanno la stessa lunghezza");
@@ -38,8 +92,20 @@ namespace csharp_typesystem_snacks
                 int[] numbers = new int[10];
                 for (int i = 0; i < numbers.Length; i++)
                 {
-                    Console.WriteLine($"Inserisci il {i + 1}° numero");
-                    numbers[i] = Convert.ToInt32(Console.ReadLine());
+                    while (control)
+                    {
+                        try
+                        {
+                            Console.WriteLine($"Inserisci il {i + 1}° numero");
+                            numbers[i] = Convert.ToInt32(Console.ReadLine());
+                            control = false;
+                        } catch (FormatException)
+                        {
+                            Console.WriteLine("ERRORE: Il valore inserito non è un numero");
+                            control = true;
+                        }
+                    }
+                    control = true;
                 }
                 Console.WriteLine($"La somma dei numeri inseriti è: {numbers.Sum()}");
 
@@ -66,8 +132,22 @@ namespace csharp_typesystem_snacks
             {
                 // Snack 5: Il software chiede all’utente di inserire un numero.Se il numero inserito è pari, stampa il numero, se è dispari, stampa il numero successivo.
                 Console.WriteLine(Program.Prettifier("Snack 5"));
-                Console.WriteLine("Inserisci un numero");
-                int num = Convert.ToInt32(Console.ReadLine());
+                int num = 0;
+                while (control)
+                {
+                    try
+                    {
+                        Console.WriteLine("Inserisci un numero");
+                        num = Convert.ToInt32(Console.ReadLine());
+                        control = false;
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("ERRORE: Il valore inserito non è un numero");
+                        control = true;
+                    }
+                }
+                control = true;
                 Console.WriteLine($"output: {(num % 2 == 0 ? num : num + 1)}");
             }
 
@@ -77,8 +157,22 @@ namespace csharp_typesystem_snacks
                 // Snack 6: In un array sono contenuti i nomi degli invitati alla festa del grande Gatsby. Chiedi all’utente il suo nome e comunicagli se può partecipare o meno alla festa.
                 Console.WriteLine(Program.Prettifier("Snack 6"));
                 string[] invited = { "francesco", "gabriele", "gianmarco", "valerio", "davide", "adnrea" };
-                Console.WriteLine("Inserisci il tuo nome");
-                string name = Console.ReadLine();
+                string name = "";
+                while (control)
+                {
+                    try
+                    {
+                        Console.WriteLine("Inserisci il tuo nome");
+                        name = Console.ReadLine();
+                        control = false;
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("ERRORE: Il valore inserito non è una stringa");
+                        control = true;
+                    }
+                }
+                control = true;
                 if (invited.Contains(name.ToLower())) Console.WriteLine($"Puoi partecipare alla festa, {name}!");
                 else Console.WriteLine($"Non ho trovato il tuo nome nella lista degli invitati, {name}.");
             }
@@ -89,11 +183,24 @@ namespace csharp_typesystem_snacks
                 // Snack 7: Crea un array vuoto. Chiedi per 6 volte all’utente di inserire un numero, se è dispari inseriscilo nell’array.
                 Console.WriteLine(Program.Prettifier("Snack 7"));
                 int[] numbers = new int[6];
-                int input;
+                int input = 0;
                 for (int i = 0; i < 6; i++)
                 {
-                    Console.WriteLine($"Inserisci il {i + 1}° numero");
-                    input = Convert.ToInt32(Console.ReadLine());
+                    while (control)
+                    {
+                        try
+                        {
+                            Console.WriteLine($"Inserisci il {i + 1}° numero");
+                            input = Convert.ToInt32(Console.ReadLine());
+                            control = false;
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("ERRORE: Il valore inserito non è un numero");
+                            control = true;
+                        }
+                    }
+                    control = true;
                     if (input % 2 != 0) numbers[i] = input;
                 }
                 int[] output = numbers.Where(number => number != 0).ToArray();
@@ -121,13 +228,26 @@ namespace csharp_typesystem_snacks
                 // Snack 9: Crea un array vuoto e chiedi all’utente un numero da inserire nell’array. Continua a chiedere i numeri all’utente e a inserirli nell’array, fino a quando la somma degli elementi è minore di 50.
                 Console.WriteLine(Program.Prettifier("Snack 9"));
                 int sum = 0;
-                int input;
+                int input = 0;
                 int[] numbers = { };
                 while (sum < 50)
                 {
-                    Console.WriteLine($"La somma attuale è: {sum}");
-                    Console.WriteLine($"Inserisci un numero");
-                    input = Convert.ToInt32(Console.ReadLine());
+                    while (control)
+                    {
+                        try
+                        {
+                            Console.WriteLine($"La somma attuale è: {sum}");
+                            Console.WriteLine($"Inserisci un numero");
+                            input = Convert.ToInt32(Console.ReadLine());
+                            control = false;
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("ERRORE: Il valore inserito non è un numero");
+                            control = true;
+                        }
+                    }
+                    control = true;
                     sum += input;
                     numbers = numbers.Concat(new int[] { input }).ToArray();
                 }
@@ -140,8 +260,22 @@ namespace csharp_typesystem_snacks
             {
                 // Snack 10: Fai inserire un numero, che chiameremo N, all’utente. Genera N array, ognuno formato da 10 numeri casuali tra 1 e 100. Ogni volta che ne crei uno, stampalo a schermo.
                 Console.WriteLine(Program.Prettifier("Snack 10"));
-                Console.WriteLine("Inserisci un numero");
-                int n = Convert.ToInt32(Console.ReadLine());
+                int n = 0;
+                while (control)
+                {
+                    try
+                    {
+                        Console.WriteLine("Inserisci un numero");
+                        n = Convert.ToInt32(Console.ReadLine());
+                        control = false;
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("ERRORE: Il valore inserito non è un numero");
+                        control = true;
+                    }
+                }
+                control = true;
                 int[][] randArrays = new int[n][];
                 Random r = new Random();
                 for (int i = 0; i < n; i++)
