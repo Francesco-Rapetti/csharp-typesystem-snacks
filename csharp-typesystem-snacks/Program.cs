@@ -88,6 +88,24 @@ namespace csharp_typesystem_snacks
             {
                 // Snack 7: Crea un array vuoto. Chiedi per 6 volte all’utente di inserire un numero, se è dispari inseriscilo nell’array.
                 Console.WriteLine(Program.Prettifier("Snack 7"));
+                int[] numbers = new int[6];
+                int input;
+                for (int i = 0; i < 6; i++)
+                {
+                    Console.WriteLine($"Inserisci il {i + 1}° numero");
+                    input = Convert.ToInt32(Console.ReadLine());
+                    if (input % 2 != 0) numbers[i] = input;
+                }
+                int[] output = numbers.Where(number => number != 0).ToArray();
+                if (output.Length != 0)
+                {
+                    Console.Write($"I numeri dispari selezionati sono: ");
+                    output.ToList().ForEach(i => Console.Write($"{i.ToString()} "));
+                    Console.WriteLine();
+                } else
+                {
+                    Console.WriteLine("Non hai selezionato numeri dispari.");
+                }
             }
 
             Console.WriteLine();
