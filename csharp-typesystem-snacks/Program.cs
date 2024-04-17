@@ -125,9 +125,21 @@ namespace csharp_typesystem_snacks
             Console.WriteLine();
 
             {
-                // Snack 9: Crea un array vuoto e chiedi all’utente un numero da inserire nell’array.Continua a chiedere i numeri all’utente e a inserirli nell’array, fino a quando la somma degli elementi è minore di 50.
+                // Snack 9: Crea un array vuoto e chiedi all’utente un numero da inserire nell’array. Continua a chiedere i numeri all’utente e a inserirli nell’array, fino a quando la somma degli elementi è minore di 50.
                 Console.WriteLine(Program.Prettifier("Snack 9"));
-
+                int sum = 0;
+                int input;
+                int[] numbers = { };
+                while (sum < 50)
+                {
+                    Console.WriteLine($"La somma attuale è: {sum}");
+                    Console.WriteLine($"Inserisci un numero");
+                    input = Convert.ToInt32(Console.ReadLine());
+                    sum += input;
+                    numbers = numbers.Concat(new int[] { input }).ToArray();
+                }
+                Console.WriteLine($"I numeri inseriti sono: {String.Join(", ", numbers)}");
+                Console.WriteLine($"La loro somma è: {sum}");
             }
 
             Console.WriteLine();
