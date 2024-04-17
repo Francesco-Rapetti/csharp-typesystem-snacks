@@ -38,7 +38,7 @@ namespace csharp_typesystem_snacks
                 int[] numbers = new int[10];
                 for (int i = 0; i < numbers.Length; i++)
                 {
-                    Console.WriteLine($"Inserisci il {i+1}° numero");
+                    Console.WriteLine($"Inserisci il {i + 1}° numero");
                     numbers[i] = Convert.ToInt32(Console.ReadLine());
                 }
                 Console.WriteLine($"La somma dei numeri inseriti è: {numbers.Sum()}");
@@ -68,7 +68,7 @@ namespace csharp_typesystem_snacks
                 Console.WriteLine(Program.Prettifier("Snack 5"));
                 Console.WriteLine("Inserisci un numero");
                 int num = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine($"output: {(num % 2 == 0 ? num : num +1)}");
+                Console.WriteLine($"output: {(num % 2 == 0 ? num : num + 1)}");
             }
 
             Console.WriteLine();
@@ -97,15 +97,8 @@ namespace csharp_typesystem_snacks
                     if (input % 2 != 0) numbers[i] = input;
                 }
                 int[] output = numbers.Where(number => number != 0).ToArray();
-                if (output.Length != 0)
-                {
-                    Console.Write($"I numeri dispari selezionati sono: ");
-                    output.ToList().ForEach(i => Console.Write($"{i.ToString()} "));
-                    Console.WriteLine();
-                } else
-                {
-                    Console.WriteLine("Non hai selezionato numeri dispari.");
-                }
+                if (output.Length != 0) Console.WriteLine($"I numeri dispari selezionati sono: {String.Join(", ", output)}");
+                else Console.WriteLine("Non hai selezionato numeri dispari.");
             }
 
             Console.WriteLine();
@@ -113,7 +106,7 @@ namespace csharp_typesystem_snacks
             {
                 // Snack 8: Crea un array di numeri interi e fai la somma di tutti gli elementi che sono in posizione dispari.
                 Console.WriteLine(Program.Prettifier("Snack 8"));
-                int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 4, 45, 2, 3, 45, 25345};
+                int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 4, 45, 2, 3, 45, 25345 };
                 int sum = 0;
                 for (int i = 1; i < numbers.Length; i += 2)
                 {
@@ -147,6 +140,19 @@ namespace csharp_typesystem_snacks
             {
                 // Snack 10: Fai inserire un numero, che chiameremo N, all’utente. Genera N array, ognuno formato da 10 numeri casuali tra 1 e 100. Ogni volta che ne crei uno, stampalo a schermo.
                 Console.WriteLine(Program.Prettifier("Snack 10"));
+                Console.WriteLine("Inserisci un numero");
+                int n = Convert.ToInt32(Console.ReadLine());
+                int[][] randArrays = new int[n][];
+                Random r = new Random();
+                for (int i = 0; i < n; i++)
+                {
+                    randArrays[i] = new int[10];
+                    for (int j = 0; j < 10; j++)
+                    {
+                        randArrays[i][j] = r.Next(1, 100);
+                    }
+                    Console.WriteLine(String.Join(", ", randArrays[i]));
+                }
             }
 
 
